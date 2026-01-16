@@ -1,73 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const [imageError, setImageError] = useState(false);
-  const [imageSrc, setImageSrc] = useState('/images/footer.png');
-
-  useEffect(() => {
-    console.log('🚀 Footer component loaded in HOME page');
-    
-    // الحصول على BASE_URL من Vite
-    const baseUrl = import.meta.env.BASE_URL || '';
-    
-    // اختبار المسارات المختلفة
-    const testPaths = [
-      '/images/footer.png',
-      './images/footer.png',
-      'images/footer.png',
-      `${baseUrl}/images/footer.png`,
-      window.location.pathname === '/' ? './images/footer.png' : '/images/footer.png'
-    ];
-
-    console.log('🔍 Testing paths:', testPaths);
-    
-    // اختبار المسارات
-    testPaths.forEach((path, index) => {
-      const img = new Image();
-      img.src = path;
-      
-      img.onload = () => {
-        console.log(`✅ Found working path: ${path}`);
-        if (imageSrc !== path) {
-          setImageSrc(path);
-        }
-      };
-      
-      img.onerror = () => {
-        console.log(`❌ Failed path: ${path}`);
-      };
-    });
-  }, []);
-
   return (
-    <footer className="relative w-full min-h-[108vh] flex items-end pb-12 px-10 md:px-20 overflow-hidden">
-      {/* حاوية الصورة مع تأثيرات متعددة */}
+    <footer className="relative w-full min-h-[108vh] flex items-end pb-12 px-10 md:px-20 overflow-hidden bg-[#080911] z-10"> {/* إضافة z-10 */}
+      {/* حاوية الصورة */}
       <div className="absolute inset-0 z-0">
-        {/* صورة الفوتر الأساسية */}
         <img 
-          src={imageSrc}
+          src="/images/footer.png" 
           alt="Astronaut on Moon" 
           className="w-full h-full object-cover object-bottom opacity-80"
           onError={(e) => {
-            console.error('❌ Footer image failed in Home page:', e.target.src);
-            setImageError(true);
-            
-            // جرب مسار آخر
-            if (imageSrc === '/images/footer.png') {
-              setImageSrc('./images/footer.png');
-            } else if (imageSrc === './images/footer.png') {
-              setImageSrc('images/footer.png');
-            } else {
-              // عرض بديل
-              e.target.style.display = 'none';
-            }
+            e.target.src = './images/footer.png';
           }}
-          onLoad={(e) => {
-            console.log('✅ Footer image loaded successfully in Home');
-            console.log('📍 Path used:', imageSrc);
-            console.log('📏 Image size:', e.target.naturalWidth, 'x', e.target.naturalHeight);
-            setImageError(false);
+          onLoad={() => {
+            console.log('✅ صورة الفوتر محملة بنجاح!');
           }}
         />
         
@@ -126,13 +73,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* رسالة تحذير إذا فشل تحميل الصورة */}
-      {imageError && (
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-yellow-500/20 border border-yellow-500/40 text-yellow-200 px-4 py-2 rounded-lg text-sm">
-          ⚠️ الصورة غير متوفرة في الصفحة الرئيسية
-        </div>
-      )}
     </footer>
   );
 };

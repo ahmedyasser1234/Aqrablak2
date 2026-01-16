@@ -421,8 +421,17 @@ const Home = () => {
       minHeight: '100vh',
       overflowX: 'hidden'
     }}>
-      {/* الخلفية المتحركة */}
-      <BackgroundEffects />
+      {/* الخلفية المتحركة - تأكد من أنها في الخلف */}
+      <div style={{ 
+        position: 'fixed', 
+        top: 0, 
+        left: 0, 
+        width: '100%', 
+        height: '100%', 
+        zIndex: 0 
+      }}>
+        <BackgroundEffects />
+      </div>
       
       {/* المحتوى الرئيسي */}
       <div style={{ position: 'relative', zIndex: 1 }}>

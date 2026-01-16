@@ -21,17 +21,20 @@ import Footer from './components/footer.jsx';
 const App = () => {
   return (
     <div className="relative min-h-screen flex flex-col bg-[#080911] overflow-x-hidden">
-      {/* الخلفية المتحركة */}
-      <BackgroundEffects />
+      {/* الخلفية المتحركة - في الخلف جداً */}
+      <div className="fixed inset-0 -z-50">
+        <BackgroundEffects />
+      </div>
+      
       <CursorEffect />
       <ScrollToTop />
       <SocialSidebar />
       
-      {/* النافبار في الأعلى */}
+      {/* النافبار */}
       <Navbar />
       
-      {/* المحتوى الرئيسي - يأخذ المساحة المتبقية */}
-      <main className="flex-grow relative z-10">
+      {/* المحتوى الرئيسي */}
+      <main className="flex-grow relative z-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
@@ -47,7 +50,7 @@ const App = () => {
         </Routes>
       </main>
       
-      {/* الفوتر في الأسفل */}
+      {/* الفوتر - أعلى من الخلفية */}
       <Footer />
     </div>
   );
