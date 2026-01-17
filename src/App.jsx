@@ -1,12 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
-import Hero from './components/Hero.jsx';
-import Goals from './components/Goals.jsx';
-import Ambition from './components/Ambition.jsx';
-import StudioShowcase from './components/StudioShowcase.jsx';
-import IdeaPlanting from './components/IdeaPlanting.jsx';
-import Footer from './components/Footer.jsx';
+
+import Footer from './components/footer.jsx';
 import ServicesPage from './pages/ServicesPage.jsx';
 import BackgroundEffects from './components/BackgroundEffects.jsx';
 import MotionGraphicsPage from './pages/MotionGraphicsPage.jsx';
