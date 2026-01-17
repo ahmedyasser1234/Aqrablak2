@@ -99,7 +99,7 @@ const Hero = () => {
                 {t('hero.title')}
               </h1>
             </ScrollReveal>
-
+<br />
             <ScrollReveal delay={0.4} className="max-w-2xl space-y-0 md:space-y-4 px-2 lg:px-0">
               <p className="text-xs md:text-xl lg:text-2xl text-white/70 leading-relaxed font-light">
                 {t('hero.desc1')}
